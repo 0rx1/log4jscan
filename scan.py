@@ -118,4 +118,4 @@ if __name__ == "__main__":
     if options.url:
         start_url (options.url)
     elif options.url == None:
-        print('Usage: python3 scan4j.py -u <target url>')
+        print('Usage: python3 scan.py -u url')
