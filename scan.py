@@ -64,8 +64,7 @@ def checkDnslogRecord(dnslog):
     url = 'http://www.dnslog.cn/getrecords.php?t=0.8000782430099610'
 
     try:
-        r = requests.get(url, headers=getHeaders('Cookie', cookie), timeout=120)
-        if subdomain in r.text:
+        r = requests.get(url, headers=getHeaders('Cookie', cookie), timeout=120, verify=False)
             print('[+] Found the problem, dnslog received the record: {}'.format(r.text))
             return 1
         else:
