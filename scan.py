@@ -73,7 +73,7 @@ def checkDnslogRecord(dnslog):
         return 0
 
 def go(vuln, payload, dnslog, url):
-    r = requests.get(url, headers=getHeaders(vuln, payload), timeout=120)
+    r = requests.get(url, headers=getHeaders(vuln, payload), timeout=120, verify=False)
     result = checkDnslogRecord(dnslog)
     if result == 1:
         print('[+] Current payload: {}: {}'.format(vuln, payload))
