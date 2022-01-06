@@ -5,6 +5,8 @@ from threading import Thread
 from optparse import OptionParser 
 
 
+
+
 # Configure injection point: the request header that may be problematic in the http request
 vulns = [
     'X-Client-IP','X-Remote-IP','X-Remote-Addr','X-Forwarded-For',
@@ -65,6 +67,7 @@ def checkDnslogRecord(dnslog):
 
     try:
         r = requests.get(url, headers=getHeaders('Cookie', cookie), timeout=120, verify=False)
+        if subdomain in r.text:
             print('[+] Found the problem, dnslog received the record: {}'.format(r.text))
             return 1
         else:
@@ -117,4 +120,4 @@ if __name__ == "__main__":
     if options.url:
         start_url (options.url)
     elif options.url == None:
-        print('Usage: python3 scan.py -u url')
+        print('Usage: python3 scan.py -u <target url>')
