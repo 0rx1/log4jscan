@@ -46,7 +46,7 @@ def getHeaders(h_key='', h_value=''):
 def getDnslogSubdomain():
     url = 'http://www.dnslog.cn/getdomain.php?t=0.8000782430099618'
     try:
-        r = requests.get(url, headers=getHeaders(), timeout=120)
+        r = requests.get(url, headers=getHeaders(), timeout=120, verify=False)
         subdomain = r.text
         cookie = r.cookies
         cookie = requests.utils.dict_from_cookiejar(cookie)
